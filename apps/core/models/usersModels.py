@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 class User(AbstractUser):
@@ -30,4 +31,21 @@ class User(AbstractUser):
         """Return username."""
         return self.username
     
+class Profile(models.Model):
+    user = models.OneToOneField(
+        get_user_model(), 
+        verbose_name=_("user_profile"), 
+        on_delete=models.CASCADE
+    )
     
+    picture = models.ImageField(
+        _("user_picture"), 
+        upload_to='uploads/users/',
+        blank=True, 
+        null=True
+    )
+    
+    def __str__(self):
+        """Return user's str representation."""
+        return str(self.user)
+

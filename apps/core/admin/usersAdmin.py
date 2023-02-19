@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from apps.core.models import User
+from apps.core.models import User, Profile
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
@@ -14,3 +14,7 @@ class CustomUserAdmin(UserAdmin):
     def make_verified(self, request, queryset):
         queryset.update(is_verified=True)
 
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'picture')
+    list_filter = ('user',)
