@@ -1,0 +1,1 @@
+from apps.core.tests.usersTests import TestUsers

@@ -1,1 +1,1 @@
-from apps.core.admin import usersAdmin
+from apps.core.admin.usersAdmin import CustomUserAdmin, ProfileAdmin
