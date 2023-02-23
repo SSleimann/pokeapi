@@ -49,6 +49,7 @@ BASE_APPS = [
 
 LOCAL_APPS = [
     'apps.core.apps.CoreConfig',
+    'apps.accounts.apps.AccountsConfig',
 ]
 
 THIRD_APPS = [
@@ -147,9 +148,9 @@ EMAIL_TIMEOUT = 5
 
 # Django REST Framework
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    # ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'knox.auth.TokenAuthentication',
     ),
@@ -162,7 +163,7 @@ REST_KNOX = {
     'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
     'AUTH_TOKEN_CHARACTER_LENGTH': 64,
     'TOKEN_TTL': timedelta(hours=1),
-    'USER_SERIALIZER': 'apps.users.serializers.UserSerializer',
+    'USER_SERIALIZER': 'apps.accounts.serializers.UserLoginSerializer',
     'TOKEN_LIMIT_PER_USER': 10,
     'AUTO_REFRESH': True,
 }
