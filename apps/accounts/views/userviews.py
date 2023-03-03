@@ -11,7 +11,8 @@ from apps.accounts.serializers import (
     UserModelSerializer, 
     UserSingUpSerializer, 
     ProfileModelSerializer,
-    UserLoginSerializer
+    UserLoginSerializer,
+    TokenVerificationSerializer
 )
 
 from apps.accounts.permissions import IsOwnerPermission
@@ -31,10 +32,13 @@ class UserViewSet(GenericViewSet, RetrieveModelMixin, UpdateModelMixin):
         elif self.action == 'login':
             return UserLoginSerializer
         
+        elif self.action == 'verify':
+            return TokenVerificationSerializer
+        
         return UserModelSerializer
     
     def get_permissions(self):
-        if self.action in ['login', 'signup']:
+        if self.action in ['login', 'signup', 'verify']:
             permissions = [AllowAny]
         
         elif self.action in ['retrieve', 'update', 'partial_updated', 'profile']:
@@ -80,4 +84,17 @@ class UserViewSet(GenericViewSet, RetrieveModelMixin, UpdateModelMixin):
         }
         
         return Response(data, status=status.HTTP_201_CREATED)
+    
+    @action(detail=False, methods=['post'])
+    def verify(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        
+        data = {
+            'user': user.username,
+            'verified': user.is_verified
+        }
+        
+        return Response(data, status=status.HTTP_200_OK)
     

@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Hello, {{user}}
+
+If you want to use the API you must verify your account.
+
+To do that visit this link: and enter this token:
+
+{{token}}
+
+{% endautoescape %}
