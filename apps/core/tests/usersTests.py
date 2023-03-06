@@ -54,7 +54,7 @@ class TestUsers(TestCase):
         profile = Profile.objects.create(user=user)
         
         finded_profile = Profile.objects.filter(user__email='prueba@prueba.com')
-        print(finded_profile)
+        
         self.assertEqual(str(profile), str(user))
         self.assertTrue(finded_profile.exists())
     

@@ -125,7 +125,7 @@ STATIC_ROOT = str(BASE_DIR / "staticfiles")
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [str(APPS_DIR / "static")]
+STATICFILES_DIRS = [str(BASE_DIR / "static")]
 
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -133,7 +133,7 @@ STATICFILES_FINDERS = [
 ]
 
 # Media files
-MEDIA_ROOT = str(APPS_DIR / "media")
+MEDIA_ROOT = str(BASE_DIR / "media")
 MEDIA_URL = '/media/'
 
 # Security
