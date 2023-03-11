@@ -19,10 +19,15 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
-      env:
-        DATABASE_URL: 'postgres://postgres:testpasswordd0@localhost:5432/pokedja'
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Setup PostgreSQL
+      uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        postgresql version: '15.2'
+        postgresql db: 'pokedja'
+        postgresql user: 'postgres'
+        postgresql password: 'megahyperpassword'
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
