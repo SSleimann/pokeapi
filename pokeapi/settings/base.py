@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 APPS_DIR = BASE_DIR / 'apps'
 
 env = environ.Env()
-env.read_env(str(BASE_DIR / ".env"))
+#env.read_env(str(BASE_DIR / ".env"))
 
 #debug
 DEBUG = env.bool('DJANGO_DEBUG', default=False)
