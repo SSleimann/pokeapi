@@ -41,7 +41,7 @@ class UserViewSet(GenericViewSet, RetrieveModelMixin, UpdateModelMixin):
         if self.action in ['login', 'signup', 'verify']:
             permissions = [AllowAny]
         
-        elif self.action in ['retrieve', 'update', 'partial_updated', 'profile']:
+        elif self.action in ['retrieve', 'update', 'partial_update', 'profile']:
             permissions = [IsOwnerPermission]
         
         else:

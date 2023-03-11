@@ -1,0 +1,1 @@
+from apps.pokemon.tests.poketests import PokemonTest
