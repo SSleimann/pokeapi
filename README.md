@@ -103,12 +103,12 @@ After that, you should:
 
 ### Login
 
-In this example, a POST request is made to the `POST /accounts/login/` route with the email and the password. Then the content of the request is decoded, the json is obtained and then the token is obtained.
+In this example, a POST request is made to the `/accounts/login/` route with the email and the password. Then the content of the request is decoded, the json is obtained and then the token is obtained.
 
 ![example-1](/.github/images/example1.png)
 
 ### Display pokemon types
 
-A GET request is made to the `GET /pokemon/all_types` route, the authorization header is set with a token, and the data is returned.
+A GET request is made to the `/pokemon/all_types` route, the authorization header is set with a token, and the data is returned.
 
 ![example-2](/.github/images/example2.png)
