@@ -57,7 +57,7 @@ After that, you should:
 
 `GET /pokemon/` Shows all types of pokemon. You can also paginate: `/pokemon/?limit=100&offset=400`
 
-`GET /pokemon/all_pokemon/` Shows all pokemon
+`GET /pokemon/all_types/` Shows all types of pokemon
 
 `GET /accounts/{user}/` Display user information
 
